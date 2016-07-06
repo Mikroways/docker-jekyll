@@ -48,3 +48,16 @@ REPO_URL=https://github.com/Mikroways/mikroways.net.git --rm -v
   }
 }
 ```
+
+Github configuration requires to go to Settings -> Webhooks & services -> Create
+webhook.
+
+* Payload URL enter: http://prueba:1234@104.131.88.52/deploy
+* Content type: any
+* Events: Push
+
+# To Do
+
+* Add a secret (maybe using POST to increase security). It's important to
+  implement SSL in that case.
+* Restrict location /deploy to be accesed only from Github IP addresses.
