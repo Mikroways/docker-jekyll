@@ -4,11 +4,21 @@ MAINTAINER Leandro Di Tommaso <leandro.ditommaso@mikroways.net>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN gem install bundle   && \
-    gem install jekyll
+RUN apt-get update                              && \
+    apt-get install --no-install-recommends -qy    \
+                    apache2-utils                  \
+                    nginx-extras                   \
+                    sudo                        && \
+    apt-get clean                               && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
-VOLUME ["/data"]
-
+ADD default.conf /etc/nginx/conf.d/
 ADD ./generate-html.sh /bin/
-RUN chmod +x /bin/generate-html.sh
-ENTRYPOINT ["/bin/generate-html.sh"]
+ADD ./entrypoint.sh /bin/
+RUN rm /etc/nginx/sites-enabled/default         && \
+    chmod +x /bin/generate-html.sh              && \
+    chmod +x /bin/entrypoint.sh
+
+EXPOSE "80"
+
+ENTRYPOINT ["/bin/entrypoint.sh"]
