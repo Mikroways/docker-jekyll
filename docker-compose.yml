@@ -1,0 +1,9 @@
+mikroways_web:
+  build: .
+  environment:
+    HTTP_USER: "ldskdeis"
+    HTTP_PASS: "dj82HS201kHd2"
+    REPO_URL: "https://github.com/Mikroways/mikroways.net.git"
+  ports:
+    - "80:80"
+  restart: always
