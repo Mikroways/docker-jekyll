@@ -13,4 +13,5 @@ sed -i 's@SECRET@'"$SECRET"'@g' /bin/generate-html.sh
 
 echo "www-data ALL=(root) NOPASSWD: /bin/generate-html.sh" >> /etc/sudoers
 htpasswd -bc /etc/nginx/.htpasswd $HTTP_USER $HTTP_PASS
+/bin/generate-html.sh $SECRET
 /usr/sbin/nginx -g "daemon off; error_log /dev/stdout;"

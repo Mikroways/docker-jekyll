@@ -26,8 +26,9 @@ docker run -p 8080:80 -d -e "HTTP_USER=mikroways" -e "HTTP_PASS=password" -e
 "REPO_URL=https://github.com/Mikroways/mikroways.net.git" mikroways/jekyll
 ```
 
-After that, check container logs and look for the string "Secret to send posts
-with":
+After starting, the container will deploy the website for the first time and
+generate the secret for automated deployment. Check the container logs and look
+for the string "Secret to send posts with" to get the secret:
 
 ```
 Secret to send posts with:
@@ -67,24 +68,9 @@ requirement.
 
 To test everything works OK follow the steps below.
 
-1. Access website: as website hasn't been deployed yet, you should get a 403
-Forbidden error.
-
-```
-$ curl http://hostname
-```
-
-```html
-<html>
-<head><title>403 Forbidden</title></head>
-<body bgcolor="white">
-<center><h1>403 Forbidden</h1></center>
-<hr><center>nginx/1.6.2</center>
-</body>
-</html>
-```
-
-2. Deploy website for the first time:
+1. Access the website: after the first deploy has finished you should see the
+  website online.
+2. Force deployment:
 
 ```
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d
@@ -92,7 +78,9 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d
 http://mikroways:password@hostname/deploy
 ```
 
-3. Access website again: you should get the website as expected.
+If it worked OK you will see in the container logs that the deployment process
+has started. If anything was changed in the remote repository, you will see
+changes applied after deployment finishes.
 
 ## Automation with Github
 
