@@ -15,7 +15,8 @@ RUN apt-get update                              && \
 ADD default.conf /etc/nginx/conf.d/
 ADD ./generate-html.sh /bin/
 ADD ./entrypoint.sh /bin/
-RUN rm /etc/nginx/sites-enabled/default         && \
+RUN mkdir /data                                 && \
+    rm /etc/nginx/sites-enabled/default         && \
     chmod +x /bin/generate-html.sh              && \
     chmod +x /bin/entrypoint.sh
 
