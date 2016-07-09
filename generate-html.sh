@@ -2,6 +2,10 @@
 
 set -e
 
+# If secret got from HTTP request does not match the expected
+# finish execution with an error.
+! [ "SECRET" == "$1" ] && exit 1
+
 cd /tmp
 if [ -d jekyll_site ]; then
   cd jekyll_site
