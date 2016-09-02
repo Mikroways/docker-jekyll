@@ -10,7 +10,7 @@ function startup {
   # Replaces REPO_URL for the one passed as an environment variable.
   sed -i 's@REPO_URL@'"$REPO_URL"'@g' /bin/generate-html.sh
   # Replaces SECRET expected in posts requests for the randomly generated one.
-  sed -i 's@SECRET@'"$SECRET"'@g' /bin/generate-html.sh
+  sed -i 's@__SECRET@'"$SECRET"'@g' /bin/generate-html.sh
 
   echo "www-data ALL=(root) NOPASSWD: /bin/generate-html.sh" >> /etc/sudoers
   htpasswd -bc /etc/nginx/.htpasswd $HTTP_USER $HTTP_PASS
