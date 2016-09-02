@@ -2,9 +2,10 @@
 
 set -e
 
-# If secret got from HTTP request does not match the expected
-# finish execution with an error.
-! [ "SECRET" == "$1" ] && exit 1
+# If system was configured to use a secret and secret got
+# from HTTP request does not match the expected finish
+# execution with an error.
+[ "$USE_SECRET" == "yes" ] && ! [ "__SECRET" == "$1" ] && exit 1
 
 cd /tmp
 if [ -d jekyll_site ]; then
