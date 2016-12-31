@@ -13,6 +13,7 @@ RUN apt-get update                              && \
     apt-get clean                               && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
+ADD nginx.conf /etc/nginx/
 ADD default.conf /etc/nginx/conf.d/
 ADD ./generate-html.sh /bin/
 ADD ./entrypoint.sh /bin/
