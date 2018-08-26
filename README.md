@@ -28,7 +28,9 @@ required):
 
 * **HTTP_USER**: username for HTTP authentication.
 * **HTTP_PASS**: password for HTTP authentication.
-* **REPO_URL**: git repository URL to clone from.
+* **REPO_URL**: git repository URL to clone from. In case you're using a private
+  GitHub repository, you can specify the GitHub username and password like this:
+  `https://username:password@github.com/username/repository`
 
 ## Automated deployment
 
@@ -64,7 +66,8 @@ README.
 This requires defining two additional environment variables:
 
 * **USE_SECRET**: this variable must be set to 'yes' (lowercase).
-* **SECRET (optional)**: the secret you want to use.
+* **SECRET (optional)**: the secret you want to use. Please do not use the `|`
+  character in the secret.
 
 In case you do not specify a secret, it will be automatically generated. In that
 case, you'll need to check the container logs and look for the string "Secret to
