@@ -28,7 +28,9 @@ required):
 
 * **HTTP_USER**: username for HTTP authentication.
 * **HTTP_PASS**: password for HTTP authentication.
-* **REPO_URL**: git repository URL to clone from.
+* **REPO_URL**: git repository URL to clone from. In case you're using a private
+  GitHub repository, you can specify the GitHub username and password like this:
+  `https://username:password@github.com/username/repository`
 
 ## Automated deployment
 
